@@ -32,8 +32,9 @@ def get_power_consumption():
 
     server = os.environ['fritzbox_ip']
     password = os.environ['fritzbox_password']
+    username = os.environ.get('fritzbox_username')
 
-    sid = fh.get_sid(server, password)
+    sid = fh.get_sid(server, password, username)
     data = fh.get_page(server, sid, PAGE)
     matches = re.finditer(pattern, data)
     if matches:
